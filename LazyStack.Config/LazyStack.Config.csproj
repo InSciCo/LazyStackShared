@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\PackageVersions.props" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+
+	<Target Name="CopyPackageVersionsFile" BeforeTargets="Build">
+		<Copy SourceFiles="..\PackageVersions.props" DestinationFolder="$(ProjectDir)" />
+	</Target>
+	
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" />
+		
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <None Update="LazyStack.PackageVersions.props">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyStack.Notifications.Schema", "LazyStack.Notifications.Schema\LazyStack.Notifications.Schema.csproj", "{9CC939A9-4A6A-4D75-93F2-CEE2D9356D1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7D8C4C74-2E88-4A02-947F-2794C648FF99}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+		PackageVersions.props = PackageVersions.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LazyStack.Config", "LazyStack.Config\LazyStack.Config.csproj", "{709B8EBC-BA99-4B09-9268-2BEED95771E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CC939A9-4A6A-4D75-93F2-CEE2D9356D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CC939A9-4A6A-4D75-93F2-CEE2D9356D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CC939A9-4A6A-4D75-93F2-CEE2D9356D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CC939A9-4A6A-4D75-93F2-CEE2D9356D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709B8EBC-BA99-4B09-9268-2BEED95771E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709B8EBC-BA99-4B09-9268-2BEED95771E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709B8EBC-BA99-4B09-9268-2BEED95771E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709B8EBC-BA99-4B09-9268-2BEED95771E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A47CDEA7-D5BE-4873-8D06-6DBAE5D0C5CD}
+	EndGlobalSection
+EndGlobal

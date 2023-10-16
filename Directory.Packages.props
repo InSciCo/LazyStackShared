@@ -1,0 +1,10 @@
+<Project>
+	<!-- LazyStack Solution Dependencies
+		Notes: We are currently blocked from updating to the latest Microsoft libraries because of 
+		dependencies in .NET MAUI. This will probably be the case until .NET 8 is released, so we 
+		will just update everything then.
+	-->
+	<ItemGroup>
+		<PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+</Project>
