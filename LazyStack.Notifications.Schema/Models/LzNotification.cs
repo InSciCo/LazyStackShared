@@ -22,13 +22,14 @@ namespace LazyStack.Notifications.Schema.Models
     public partial class LzNotification : System.ComponentModel.INotifyPropertyChanged
     {
         private string _id;
-        private string _topicId;
+        private string _topics;
         private string _userId;
         private string _payloadParentId;
         private string _payloadId;
         private string _payloadType;
         private string _payload;
         private string _payloadAction;
+        private string _sessionId;
         private long _createUtcTick;
         private long _updateUtcTick;
 
@@ -48,15 +49,15 @@ namespace LazyStack.Notifications.Schema.Models
         }
 
         [Newtonsoft.Json.JsonProperty("topicId", Required = Newtonsoft.Json.Required.AllowNull)]
-        public string TopicId
+        public string Topics
         {
-            get { return _topicId; }
+            get { return _topics; }
 
             set
             {
-                if (_topicId != value)
+                if (_topics != value)
                 {
-                    _topicId = value;
+                    _topics = value;
                     RaisePropertyChanged();
                 }
             }
@@ -151,7 +152,20 @@ namespace LazyStack.Notifications.Schema.Models
                 }
             }
         }
+        [Newtonsoft.Json.JsonProperty("sessionId", Required = Newtonsoft.Json.Required.AllowNull)]
+        public string SessionId
+        {
+            get { return _payloadAction; }
 
+            set
+            {
+                if (_sessionId != value)
+                {
+                    _sessionId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
         [Newtonsoft.Json.JsonProperty("createUtcTick", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long CreateUtcTick
         {
