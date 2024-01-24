@@ -2,7 +2,7 @@ name: Publish NuGet
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -19,17 +19,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
 
-    - name: Build
+    - name: Build # Build solution
       run: dotnet build --no-restore
 
-    - name: Set NuGet Source
-      id: set-nuget-source
-      run: |
-        if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
-          echo "NUGET_SOURCE=https://nuget.pkg.github.com/InSciCo/dev/index.json" >> $GITHUB_ENV
-        else
-          echo "NUGET_SOURCE=https://nuget.pkg.github.com/InSciCo/index.json" >> $GITHUB_ENV
-        fi
-
     - name: Publish
-      run: dotnet nuget push ./Packages/*.nupkg --source ${{ env.NUGET_SOURCE }} --api-key ${{ secrets.ACTIONS_PAT }}
+      run: |
+        dotnet nuget push ./Packages/*.nupkg --source https://nuget.pkg.github.com/InSciCo/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
+        dotnet nuget push ./Packages/*.snupkg --source https://nuget.pkg.github.com/InSciCo/index.json --api-key ${{ secrets.GITHUB_TOKEN }}
