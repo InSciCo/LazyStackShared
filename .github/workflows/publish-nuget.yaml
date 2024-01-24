@@ -32,4 +32,4 @@ jobs:
         fi
 
     - name: Publish
-      run: dotnet nuget push ./nupkgs/*.nupkg --source ${{ env.NUGET_SOURCE }} --api-key ${{ secrets.ACTIONS_PAT }}
+      run: dotnet nuget push ./Packages/*.nupkg --source ${{ env.NUGET_SOURCE }} --api-key ${{ secrets.ACTIONS_PAT }}
