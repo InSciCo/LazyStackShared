@@ -1,0 +1,34 @@
+name: Publish NuGet
+
+on:
+  push:
+    branches: [ master, dev ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.x' # Update to your .NET version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Set NuGet Source
+      id: set-nuget-source
+      run: |
+        if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
+          echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/dev/index.json" >> $GITHUB_ENV
+        else
+          echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/index.json" >> $GITHUB_ENV
+
+    - name: Publish
+      run: dotnet nuget push ./nupkgs/*.nupkg --source ${{ env.NUGET_SOURCE }} --api-key ${{ secrets.ACTIONS_PAT }}
