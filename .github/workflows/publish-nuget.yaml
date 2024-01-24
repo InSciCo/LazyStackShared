@@ -26,9 +26,9 @@ jobs:
       id: set-nuget-source
       run: |
         if [ "${{ github.ref }}" == "refs/heads/dev" ]; then
-          echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/dev/index.json" >> $GITHUB_ENV
+          echo "NUGET_SOURCE=https://nuget.pkg.github.com/InSciCo/dev/index.json" >> $GITHUB_ENV
         else
-          echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/index.json" >> $GITHUB_ENV
+          echo "NUGET_SOURCE=https://nuget.pkg.github.com/InSciCo/index.json" >> $GITHUB_ENV
         fi
 
     - name: Publish
