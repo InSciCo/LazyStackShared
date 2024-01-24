@@ -29,6 +29,7 @@ jobs:
           echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/dev/index.json" >> $GITHUB_ENV
         else
           echo "NUGET_SOURCE=https://nuget.pkg.github.com/OWNER/index.json" >> $GITHUB_ENV
+        fi
 
     - name: Publish
       run: dotnet nuget push ./nupkgs/*.nupkg --source ${{ env.NUGET_SOURCE }} --api-key ${{ secrets.ACTIONS_PAT }}
