@@ -6,13 +6,15 @@
 		<PackageRepoFolder>$(MSBuildThisFileDirectory)\Packages</PackageRepoFolder>
 		<Copyright>Copyright (c) 2021,2022 Insight Sciences Corporation. All rights reserved.</Copyright>
 		<PackageProjectUrl>https://lazystack.io</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/InSciCo/LazyStackClient</RepositoryUrl>
+		<RepositoryUrl>https://github.com/InSciCo/LazyStackShared</RepositoryUrl>
 		<RepositoryType>GitHub</RepositoryType>
 		<Company>Insight Sciences Corporation</Company>
 		<Authors>Tim May, Thomas May</Authors>
-		<Version>3.0.0</Version>
+		<Version>3.1.0</Version>
 		<SignAssembly>false</SignAssembly>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>		
 	</PropertyGroup>
 
 	<Target Name="CopyPackageLicense" BeforeTargets="Clean">
@@ -23,16 +25,18 @@
 		<None Include="LICENSE.txt" Pack="True" PackagePath=""/>
 	</ItemGroup>
 
-	<Target Name="CreatePackagesFolder" BeforeTargets="Build">
-		<MakeDir Directories="$(PackageRepoFolder)" />
-	</Target>
-
 	<!-- Copy Package Target -->
-	<Target Name="CopyPackage" AfterTargets="Pack" Condition="Exists('$(PackageRepoFolder)')">
+	<Target Name="CopyPackage" AfterTargets="Pack">
 		<Message Importance="high" Text="Copying $(AssemblyName).$(Version).nupkg to Packages folder" />
 
+		<MakeDir Directories="$(PackageRepoFolder)" />
 		<Copy SourceFiles=".\bin\$(Configuration)\$(AssemblyName).$(Version).nupkg"
 			  DestinationFiles="$(PackageRepoFolder)\$(AssemblyName).$(Version).nupkg" />
+
+		<Copy Condition="Exists('.\bin\$(Configuration)\$(AssemblyName).$(Version).snupkg')"
+			  SourceFiles=".\bin\$(Configuration)\$(AssemblyName).$(Version).snupkg"
+			  DestinationFiles="$(PackageRepoFolder)\$(AssemblyName).$(Version).snupkg" />
+
 	</Target>
 
 	<!-- Delete Package from local cache -->
